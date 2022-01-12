@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  font-size: 1.2rem;
+  align-items: center;
+  padding-left: 2px;
+  cursor: pointer;
+}
+.container:hover {
+  opacity: 0.9;
+  background-color: #340e36;
+}
+.icons {
+  padding: 1rem;
+  font-size: small;
+}
+.container h3 {
+  font-weight: 500;
+}
+.channel span {
+  padding: 1.5rem;
+}
