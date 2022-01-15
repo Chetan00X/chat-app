@@ -2,6 +2,7 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Header from "./layouts/Header";
 import Sidebar from "./components/Sidebar";
+import React from "react";
 
 function App() {
   return (

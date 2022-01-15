@@ -5,6 +5,7 @@
   padding-left: 2px;
   cursor: pointer;
 }
+
 .container:hover {
   opacity: 0.9;
   background-color: #340e36;

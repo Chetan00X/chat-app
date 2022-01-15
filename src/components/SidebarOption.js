@@ -2,13 +2,11 @@ import { padding } from "@mui/system";
 import React from "react";
 import classes from "./SidebarOption.module.css";
 import { db } from "../firebase";
-import { useCollection } from "react-firebase-hooks/firestore";
 import { collection, addDoc } from "firebase/firestore";
+import { useCollection } from "react-firebase-hooks/firestore";
 
 function SidebarOption({ Icon, title, addChannelOption }) {
-  const [channels, loading, error] = useCollection(collection(db("rooms")));
-
-  console.log(channels);
+  const [channels, loading, error] = useCollection();
 
   const addChannel = async () => {
     const channelName = prompt("Please enter the channel name ");
@@ -17,8 +15,6 @@ function SidebarOption({ Icon, title, addChannelOption }) {
       try {
         const docRef = await addDoc(collection(db, "rooms"), {
           name: channelName,
-
-          timestamp: serverTimestamp(),
         });
       } catch (error) {
         alert(error.message);
@@ -26,7 +22,6 @@ function SidebarOption({ Icon, title, addChannelOption }) {
     }
   };
   const selectChannel = () => {};
-
   return (
     <div
       className={classes.container}
