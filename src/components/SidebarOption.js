@@ -6,8 +6,9 @@ import { collection, addDoc } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore";
 
 function SidebarOption({ Icon, title, addChannelOption }) {
-  const [channels, loading, error] = useCollection();
+  const [channels, loading, error] = useCollection(collection(db, "rooms"));
 
+  console.log(channels);
   const addChannel = async () => {
     const channelName = prompt("Please enter the channel name ");
 
