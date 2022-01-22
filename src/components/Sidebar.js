@@ -65,12 +65,13 @@ function Sidebar() {
         addChannelOption={true}
         title="Add Channel"
       />
+
       {channels?.docs.map((doc) => (
         <React.Fragment key={doc.id}>
           <SidebarOption
             id={doc.id}
-            addChannelOption={true}
             title={doc.data().name}
+            addChannelOption={false}
           />
         </React.Fragment>
       ))}
