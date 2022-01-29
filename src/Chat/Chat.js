@@ -3,25 +3,31 @@ import classes from "./Chat.module.css";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import InfoIcon from "@mui/icons-material/Info";
 import { useSelector } from "react-redux";
-import ChatInput from "./ChatInput";
-import { useDocument } from "react-firebase-hooks/firestore";
 import { db } from "../firebase";
 import { query, orderBy, doc, collection } from "firebase/firestore";
-import { useCollection } from "react-firebase-hooks/firestore";
+import { useCollection, useDocument } from "react-firebase-hooks/firestore";
+import ChatInput from "./ChatInput";
 
 function Chat() {
   const roomId = useSelector((state) => state.app.roomId);
+  console.log(roomId);
 
   const roomRef = doc(db, "rooms", roomId);
   const roomDetailRef = collection(roomRef, "messages");
 
   const q = query(roomDetailRef, orderBy("timestamp", "asc"));
 
-  const [roomDetails] = useDocument(roomId && roomRef);
-  const [roomMessages] = useCollection(roomId && q);
+  const [roomDetails] = useDocument(roomId && doc(db, "rooms", roomId));
+  const [roomMessages, loading] = useCollection(
+    roomId &&
+      query(
+        collection(doc(db, "rooms", roomId), "messages"),
+        orderBy("timestamp", "asc")
+      )
+  );
 
-  console.log(roomMessages);
-  console.log(roomDetails);
+  // console.log(roomMessages);
+  // console.log(roomDetails);
 
   return (
     <div className={classes.container}>
