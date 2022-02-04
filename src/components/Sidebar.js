@@ -16,16 +16,21 @@ import AddIcon from "@mui/icons-material/Add";
 import { db } from "../firebase";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { collection } from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 function Sidebar() {
-  const [channels, loading, error] = useCollection(collection(db, "rooms"));
+  const [channels] = useCollection(collection(db, "rooms"));
+  const auth = getAuth();
+  const [user] = useAuthState(auth);
+
   console.log(channels);
 
   return (
     <div className={classes["container"]}>
       <div className={classes["header"]}>
         <div className={classes["info"]}>
-          <h2>PUNCHAT</h2>
+          <h2>PANCHAT</h2>
           <h3>
             <FiberManualRecordIcon className={classes["fiber"]} />
             Chetan

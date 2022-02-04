@@ -2,11 +2,14 @@ import { Button } from "@mui/material";
 import { useState } from "react";
 import React from "react";
 import classes from "./ChatInput.module.css";
-import { useRef } from "react";
 import { db } from "../firebase";
 import { collection, addDoc, serverTimestamp, doc } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 
-function ChatInput({ channelName, channelId }) {
+function ChatInput({ channelName, channelId, chatRef }) {
+  const auth = getAuth();
+  const [user] = useAuthState(auth);
   const [input, setInput] = useState("");
   console.log(channelId);
   console.log(input);
@@ -23,15 +26,18 @@ function ChatInput({ channelName, channelId }) {
     const colRef = collection(roomRef, "messages");
     try {
       const addingMessages = await addDoc(colRef, {
-        message: input,
+        messages: input,
         timestamp: serverTimestamp(),
-        user: "chetan Srivastava",
-        userImages: "https://pbs.twimg.com/media/EkTogZ-X0AEBn-W.jpg",
+        user: user.displayName,
+        userImages: user.photoURL,
       });
     } catch (error) {
       alert(error.message);
     }
     setInput("");
+    return chatRef?.current?.scrollIntoView({
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -39,7 +45,7 @@ function ChatInput({ channelName, channelId }) {
       <form>
         <input
           type="text"
-          placeholder={`Message #`}
+          placeholder={`Message #${channelName ? channelName : ""}`}
           onChange={inputChangeHandler}
           value={input}
         />

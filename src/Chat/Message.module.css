@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+}
+.container img {
+  height: 5rem;
+  border-radius: 0.8rem;
+}
+.message-info {
+  padding-left: 1rem;
+}
+.message-info h4 span {
+  color: gray;
+  font-weight: 300;
+  margin-left: 4px;
+  font-size: 1rem;
+}

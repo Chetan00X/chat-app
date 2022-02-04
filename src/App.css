@@ -2,3 +2,8 @@
   display: flex;
   height: 100vh;
 }
+.app-loading {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
