@@ -2,8 +2,8 @@
   background-color: var(--slack-color);
   color: white;
   flex: 0.3;
-  border-top: 1px solid #49274b;
-  max-width: 26rem;
+  border-top: 1px solid #bfdbfe;
+  max-width: 100rem;
   margin-top: 6rem;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -11,16 +11,16 @@
 .container hr {
   margin-top: 1rem;
   margin-bottom: 1rem;
-  border: 1px solid #49274b;
+  border: 1px solid #bfdbfe;
 }
 .header {
   display: flex;
-  border-bottom: 1px solid #49274b;
+  border-bottom: 1px solid #bfdbfe;
   padding: 1.3rem;
 }
 .header > .MuiSvgIcon-root {
   padding: 0.8rem !important;
-  color: #49274b !important;
+  color: #bfdbfe !important;
   font-size: 1.8rem !important;
   border-radius: 99.9rem !important;
   background-color: white !important;
@@ -43,5 +43,19 @@
   font-size: 1.4rem !important;
   margin-top: 1px !important;
   margin-right: 2px;
-  color: green;
+  color: #4ade80;
+}
+@media (max-width: 59em) {
+  .container {
+    flex: 0.45;
+  }
+}
+@media (max-width: 34em) {
+  html {
+    font-size: 41.2%;
+  }
+  .container {
+    flex: 0.5;
+    margin-top: 8rem;
+  }
 }

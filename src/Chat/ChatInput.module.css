@@ -8,8 +8,9 @@
 }
 .container form input {
   position: fixed;
+  flex: 1;
   bottom: 3rem;
-  width: 60%;
+  width: 80%;
   border: 1px solid gray;
   border-radius: 3px;
   padding: 2rem;

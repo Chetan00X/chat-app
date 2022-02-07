@@ -4,51 +4,40 @@
   width: 100%;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 0;
   background-color: var(--slack-color);
+  padding: 1rem 0;
   color: white;
 }
-.headerLeft {
+
+.header-left {
   flex: 0.3;
   display: flex;
   align-items: center;
+  gap: 2rem;
   margin-left: 2rem;
 }
-.time {
-  margin-left: auto !important;
-  margin-right: 3rem !important;
+.header-left button {
+  background-color: var(--panchat-color);
+  border: none;
 }
-.avatar {
-  cursor: pointer !important;
-}
-.avatar:hover {
-  opacity: 0.8 !important;
-}
-.search {
-  flex: 0.4;
+.searchBar {
+  flex: 0.6;
   opacity: 1;
-  border-radius: 0.6rem;
-  background-color: #421f44;
+  border-radius: 1rem;
+  background-color: var(--panchat-color);
   text-align: center;
   display: flex;
   padding: 0 5rem;
   color: gray;
   border: 1px gray solid;
 }
-.search input {
+.searchBar input {
   background-color: transparent;
   border: none;
   text-align: center;
-  min-width: 30vw;
+  min-width: 35vw;
   outline: 0;
   color: white;
-}
-.headerRight {
-  flex: 0.3;
-  display: flex;
-  align-items: flex-end;
-}
-.help {
-  margin-left: auto !important;
-  margin-right: 2rem !important;
+  margin-left: auto;
+  margin-right: 5rem;
 }

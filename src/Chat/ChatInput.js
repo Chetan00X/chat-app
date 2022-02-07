@@ -6,8 +6,12 @@ import { db } from "../firebase";
 import { collection, addDoc, serverTimestamp, doc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
+import SendIcon from "@mui/icons-material/Send";
+import { useSelector } from "react-redux";
 
 function ChatInput({ channelName, channelId, chatRef }) {
+  const roomId = useSelector((state) => state.ui.isSidebarOpen);
+
   const auth = getAuth();
   const [user] = useAuthState(auth);
   const [input, setInput] = useState("");
@@ -26,7 +30,7 @@ function ChatInput({ channelName, channelId, chatRef }) {
     const colRef = collection(roomRef, "messages");
     try {
       const addingMessages = await addDoc(colRef, {
-        messages: input,
+        message: input,
         timestamp: serverTimestamp(),
         user: user.displayName,
         userImages: user.photoURL,

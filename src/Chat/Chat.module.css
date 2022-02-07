@@ -1,5 +1,5 @@
 .container {
-  flex: 0.7;
+  /* flex: 0.4; */
   flex-grow: 1;
   overflow-y: scroll;
   margin-top: 6rem;
